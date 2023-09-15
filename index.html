@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>color changer</title>
+</head>
+<body>
+    <h2 style="text-align: center;">Color Changer</h2>
+    <hr style="text-align: center;width: 100%;">
+    <div class="container">
+        <button id="change-clr" onclick="changeColor()">Color Change</button><br>
+        <input type="text" id="input" readonly>
+        <button id="copy-path" onclick="copy()">Copy Color Code</button>
+    </div>
+
+    <script>
+       let color = document.getElementById('change-clr')
+        let copyPath = document.getElementById('copy-path')
+
+        
+        function changeColor(){
+        let colors = [1,2,3,4,5,6,7,8,9,0,'A','B','C','D','E','F'];
+        
+        let random1 = "";
+        let random2 = "";
+        let colorCode1 = '';
+        let colorCode2 = '';
+        for(let i=0; i<6 ; i++){
+         
+        random1 +=colors[Math.floor(Math.random()*colors.length)];
+        random2 +=colors[Math.floor(Math.random()*colors.length)];   
+        colorCode1 = '#' + random1;
+        colorCode2 = '#' + random2; 
+        document.body.style.background= 'linear-gradient( to bottom,' + colorCode1 + "," +colorCode2 + ')';
+        let input = document.getElementById('input');
+            input.value = 'linear-gradient( to bottom,' + colorCode1 + "," + colorCode2+ ')';
+    }
+    return colorCode1;
+    return colorCode2;
+   
+}
+
+         
+        function copy(){ 
+            let textToCopy = document.getElementById('input');
+            console.log(textToCopy);
+            textToCopy.select();
+            textToCopy.setSelectionRange(0,99999);
+            navigator.clipboard.writeText(textToCopy.value)
+            alert("The color code copied :" +textToCopy.value);
+           
+        }
+    </script>
+</body>
+</html>
